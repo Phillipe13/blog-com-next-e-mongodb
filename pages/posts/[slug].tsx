@@ -12,6 +12,8 @@ import { CMS_NAME } from '../../lib/constants'
 import markdownToHtml from '../../lib/markdownToHtml'
 import PostType from '../../types/post'
 
+import {useFetch} from "@/lib/fetcher"
+
 type Props = {
   post: PostType
   morePosts: PostType[]
@@ -23,6 +25,9 @@ const Post = ({ post, morePosts, preview }: Props) => {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+
+  const { data } = useFetch(`/api/page-views?id=${post.slug}`);
+
   return (
     <Layout preview={preview}>
       <Container>
