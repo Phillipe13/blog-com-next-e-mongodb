@@ -1,4 +1,4 @@
-import {connectToDatabase} from '@/config/mongodb';
+import {connectToDatabase} from '../../config/mogodb';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
